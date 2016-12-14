@@ -1,0 +1,65 @@
+Setup 
+
+	Goal: create a server that renders html file with react components bundled from webpack  (no backend yet)
+
+Created empty folder and file structure for site
+1. Created folders for browser, public, and server
+2. Added blank index.html and app.js file in browser folder
+3. Added blank app.js in server folder
+
+
+Initiate our npm package
+>npm init -y
+
+Install all necessary libraries
+>npm install --save express react react-dom webpack 
+>npm install --save babel-core babel-loader babel-preset-es2015 babel-preset-react
+
+Initialize our git project
+1. >git init
+2. Add a .gitignore with node_modules inside so all the 
+node modules don't get pushed
+3. Create repo in github, then 
+>git add .
+>git commit -m "initialized git repo"
+> {copy and paste code from github then push to master}
+
+
+Add a webpack.config.js file 
+1. entry should be the main react root component
+where it's getting the document.getElementById since webpack
+will go through all the files in there that it requires
+2. output will be the output you want the webpack bundle to be placed in.  Usually put in './public/bundle.js'
+
+
+Setup index.html file
+Add div with the id='app' and that in the browser/app component the document is getting that id.
+Make sure the script to the bundle.js is in the end of body
+
+
+Create app.js file where it requires in React and Component from react.  This is when it'll render the components and assign the id where to add the react elements to it
+
+Create a server
+Add app.js in our server folder
+This will require express and app from invoking express menthod
+
+
+add app.use(express.static(path.join(__dirname, '../public')));
+This will allow the bundle file and other items in the public
+folder to be available 
+
+add app.get('/') to send the server the index.html file
+
+have the server listen by using app.listen(port#, function(err){
+	console.log(server is listening on port port#)
+})
+
+
+
+
+
+
+
+
+
+

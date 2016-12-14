@@ -54,13 +54,25 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
+	var _image = __webpack_require__(178);
+	
+	var _image2 = _interopRequireDefault(_image);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_reactDom2.default.render(_react2.default.createElement(
-		'h1',
-		null,
-		'Welcome to my hompage'
-	), document.getElementById('app'));
+	// import AtvImg from './components/AtvImg'
+	//import DrawerUndockedExample from './components/DrawerUndockedExample'
+	//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+	
+	
+	// <div>
+	// 	<MuiThemeProvider>
+	
+	// 		<DrawerUndockedExample />
+	// 	</MuiThemeProvider>
+	// 	</div>
+	
+	_reactDom2.default.render(_react2.default.createElement(_image2.default, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21468,6 +21480,311 @@
 	
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(32);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Component = _react2.default.Component;
+	
+	/**
+	 * Crest
+	 */
+	
+	var Crest = function (_Component) {
+	  _inherits(Crest, _Component);
+	
+	  function Crest() {
+	    _classCallCheck(this, Crest);
+	
+	    return _possibleConstructorReturn(this, (Crest.__proto__ || Object.getPrototypeOf(Crest)).apply(this, arguments));
+	  }
+	
+	  _createClass(Crest, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      var _props = this.props,
+	          count = _props.count,
+	          center = _props.center,
+	          circleSize = _props.circleSize,
+	          offset = _props.offset,
+	          radius = _props.radius,
+	          delay = _props.delay;
+	
+	      var offsetToC = offsetTo(center);
+	      var theta = 2 * Math.PI / count;
+	      var delta = offset ? theta / 2 : 0;
+	
+	      Array(count).fill().forEach(function (_, idx) {
+	        var start = getLocation(theta, delta, idx, radius, offsetToC);
+	        var end = getLocation(theta, delta, idx, radius * 0.5, offsetToC);
+	
+	        TweenMax.fromTo(_this2.refs[idx], 1, {
+	          attr: { r: circleSize, cx: start.x, cy: start.y }
+	        }, {
+	          attr: { r: circleSize / 8, cx: end.x, cy: end.y },
+	          ease: Sine.easeInOut,
+	          delay: delay,
+	          yoyo: true,
+	          repeat: -1
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props2 = this.props,
+	          count = _props2.count,
+	          circleSize = _props2.circleSize,
+	          radius = _props2.radius,
+	          center = _props2.center,
+	          offset = _props2.offset,
+	          fill = _props2.fill;
+	
+	      var theta = 2 * Math.PI / count;
+	      var delta = offset ? theta / 2 : 0;
+	      var nodes = Array(count).fill();
+	
+	      return _react2.default.createElement(
+	        'g',
+	        null,
+	        getCircles(theta, delta, radius, circleSize, fill, center, nodes)
+	      );
+	    }
+	  }]);
+	
+	  return Crest;
+	}(Component);
+	
+	Crest.propTypes = {
+	  count: _react2.default.PropTypes.number.isRequired,
+	  circleSize: _react2.default.PropTypes.number.isRequired,
+	  center: _react2.default.PropTypes.object.isRequired,
+	  fill: _react2.default.PropTypes.string.isRequired,
+	  offset: _react2.default.PropTypes.bool.isRequired
+	};
+	
+	function getCircles(theta, delta, radius, circleR, fill, center, nodes) {
+	  var offsetToC = offsetTo(center);
+	
+	  return nodes.map(function (_, idx) {
+	    var l = getLocation(theta, delta, idx, radius, offsetToC);
+	    return _react2.default.createElement('circle', { key: idx,
+	      ref: idx,
+	      cx: l.x, cy: l.y,
+	      r: circleR,
+	      fill: fill,
+	      strokeWidth: circleR * 0.2 });
+	  });
+	}
+	
+	function getLocation(theta, delta, idx, r, offsetToC) {
+	  return polarToCartesian(delta + theta * idx, r, offsetToC);
+	}
+	
+	function polarToCartesian(theta, r, offsetToC) {
+	  var x = r * Math.cos(theta);
+	  var y = r * Math.sin(theta);
+	  return offsetToC({ x: x, y: y });
+	}
+	
+	function offsetTo(center) {
+	  return function offsetToC(_ref) {
+	    var x = _ref.x,
+	        y = _ref.y;
+	
+	    return {
+	      x: center.x + x,
+	      y: center.y - y
+	    };
+	  };
+	}
+	
+	/**
+	 * Canvas
+	 */
+	
+	var Nucleus = function (_Component2) {
+	  _inherits(Nucleus, _Component2);
+	
+	  function Nucleus() {
+	    _classCallCheck(this, Nucleus);
+	
+	    return _possibleConstructorReturn(this, (Nucleus.__proto__ || Object.getPrototypeOf(Nucleus)).apply(this, arguments));
+	  }
+	
+	  _createClass(Nucleus, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var r = this.props.r;
+	
+	
+	      TweenMax.fromTo(this.refs.circle, 1, {
+	        attr: { r: r }
+	      }, {
+	        attr: { r: r / 8 },
+	        ease: Sine.easeInOut,
+	        yoyo: true,
+	        repeat: -1
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props3 = this.props,
+	          x = _props3.x,
+	          y = _props3.y,
+	          r = _props3.r,
+	          fill = _props3.fill;
+	
+	
+	      return _react2.default.createElement('circle', { ref: 'circle',
+	        cx: x, cy: y,
+	        r: r,
+	        fill: fill });
+	    }
+	  }]);
+	
+	  return Nucleus;
+	}(Component);
+	
+	Nucleus.propTypes = {
+	  x: _react2.default.PropTypes.number.isRequired,
+	  y: _react2.default.PropTypes.number.isRequired,
+	  r: _react2.default.PropTypes.number.isRequired,
+	  fill: _react2.default.PropTypes.string.isRequired
+	};
+	
+	/**
+	 * Canvas
+	 */
+	function Canvas(_ref2) {
+	  var w = _ref2.w,
+	      h = _ref2.h,
+	      children = _ref2.children,
+	      _ref2$bgColor = _ref2.bgColor,
+	      bgColor = _ref2$bgColor === undefined ? 'transparent' : _ref2$bgColor;
+	
+	  var viewBox = [0, 0, w, h].join(' ');
+	  var styles = {
+	    display: 'block',
+	    backgroundColor: bgColor,
+	    maxWidth: '400px',
+	    width: '100%',
+	    margin: '0 auto'
+	  };
+	
+	  return _react2.default.createElement(
+	    'svg',
+	    { version: '1.1',
+	      xmlns: 'http://www.w3.org/2000/svg',
+	      viewBox: viewBox,
+	      style: styles },
+	    children
+	  );
+	}
+	
+	Canvas.propTypes = {
+	  h: _react2.default.PropTypes.number.isRequired,
+	  w: _react2.default.PropTypes.number.isRequired,
+	  children: _react2.default.PropTypes.node,
+	  bgColor: _react2.default.PropTypes.string
+	};
+	
+	/**
+	 * App
+	 */
+	var s = 200;
+	var center = { x: s / 2, y: s / 2 };
+	var circleColor = '#fff';
+	var circleSize = 3;
+	var amp = 12;
+	var crests = [{ count: 8, offset: false }, { count: 16, offset: false }, { count: 16, offset: true }, { count: 16, offset: false }, { count: 16, offset: true }, { count: 16, offset: false }];
+	
+	var styles = {
+	  link: {
+	    color: 'white',
+	    position: 'fixed',
+	    right: '1rem',
+	    bottom: '1rem',
+	    textDecoration: 'none',
+	    letterSpacing: '0.1em'
+	  },
+	  container: {
+	    backgroundColor: '#231F20',
+	    height: '100vh'
+	  }
+	};
+	
+	var App = function (_Component3) {
+	  _inherits(App, _Component3);
+	
+	  function App() {
+	    _classCallCheck(this, App);
+	
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	  }
+	
+	  _createClass(App, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { style: styles.container,
+	          className: 'bg-black vh-100 flex items-center' },
+	        _react2.default.createElement(
+	          Canvas,
+	          { w: s, h: s },
+	          _react2.default.createElement(Nucleus, { x: center.x, y: center.y,
+	            r: circleSize,
+	            fill: circleColor }),
+	          crests.map(function (_ref3, idx) {
+	            var count = _ref3.count,
+	                offset = _ref3.offset;
+	            return _react2.default.createElement(Crest, { key: idx,
+	              count: count,
+	              circleSize: circleSize,
+	              radius: amp + amp * idx,
+	              center: center,
+	              offset: offset,
+	              delay: 0.8 * (idx + 1) / crests.length,
+	              fill: circleColor });
+	          })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return App;
+	}(Component);
+	
+	exports.default = App;
 
 /***/ }
 /******/ ]);
