@@ -8,6 +8,7 @@ import DrawerUndockedExample from './components/DrawerUndockedExample'
 import GridListExampleSingleLine from './components/GridListExampleSingleLine'
 import Video from './components/Video'
 //import MyFirstGrid from './components/Grid'
+import Section from './components/Scroll'
 
 
 
@@ -36,7 +37,7 @@ const App = () => (
 
 ReactDOM.render(
 
-	<App />,
+	<Section />,
 	document.getElementById('app')
 );
 
