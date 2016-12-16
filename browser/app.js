@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DrawerUndockedExample from './components/DrawerUndockedExample'
 import GridListExampleSingleLine from './components/GridListExampleSingleLine'
 import Video from './components/Video'
+//import MyFirstGrid from './components/Grid'
 
 
 
@@ -20,14 +21,14 @@ injectTapEventPlugin();
 // 	</MuiThemeProvider>
 // 	</div>
 
+//    <GridListExampleSingleLine />
 
 
 const App = () => (
   <MuiThemeProvider>
   	<div>
-  	
+  	<GridListExampleSingleLine />
     <DrawerUndockedExample />
-    <GridListExampleSingleLine />
     <Video />
     </div>
   </MuiThemeProvider>
