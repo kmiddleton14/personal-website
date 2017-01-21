@@ -27,7 +27,7 @@ export default class Video extends Component {
       <div>
       <div className="video-background">
           <div className="video-foreground">
-            <iframe src="https://www.youtube.com/embed/6jKr6GXF8wo?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameBorder="0" allowFullScreen></iframe>
+            <iframe src="https://www.youtube.com/embed/ZkKT3NqW1rw?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&playlist=W0LHTWG-UmQ" frameBorder="0" allowFullScreen></iframe>
           </div>
         </div>
 
