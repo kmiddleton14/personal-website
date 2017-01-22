@@ -3,6 +3,8 @@ const React = require('react')
 const { connect } = require('react-redux');
 
 
+
+
  class PageComponent extends React.Component {
 
   constructor(props){
@@ -11,35 +13,37 @@ const { connect } = require('react-redux');
 
   componentDidMount() {
     console.log('component did mount')
-    // this.props.fetchprojects()
+    
   }
 
 
   render() {
-    console.log(this.props.projects[0].img)
+    
     return (
-        <div>
+        <div >
           <section id="header">
             <header>
-              <span className="image avatar"><img src="images/Headshot.jpg" alt="" /></span>
-              <h1 id="logo"><a href="#">Kathryn Middleton</a></h1>
-              <p>System.out.println("Hello world!")</p>
+              <span className="image avatar"><img src={this.props.sidebarInfo.headshotImg} alt="" /></span>
+              <h1 id="logo"><a href="#">{this.props.sidebarInfo.name}</a></h1>
+              <p>{this.props.sidebarInfo.description}</p>
             </header>
             <nav id="nav">
               <ul>
                 <li><a href="#one" className="active">About</a></li>
-                <li><a href="#two">Things I Can Do</a></li>
-                <li><a href="#three">A Few Accomplishments</a></li>
+                <li><a href="#two">Skills</a></li>
+                <li><a href="#three">A Few Projects</a></li>
                 <li><a href="#four">Contact</a></li>
               </ul>
             </nav>
             <footer>
               <ul className="icons">
-                <li><a href="#" className="icon fa-twitter"><span className="label">Twitter</span></a></li>
-                <li><a href="#" className="icon fa-facebook"><span className="label">Facebook</span></a></li>
-                <li><a href="#" className="icon fa-instagram"><span className="label">Instagram</span></a></li>
-                <li><a href="#" className="icon fa-github"><span className="label">Github</span></a></li>
-                <li><a href="#" className="icon fa-envelope"><span className="label">Email</span></a></li>
+
+              { this.props.socialIcons.map( socialIcon => {
+                  return(
+                    <li><a href={socialIcon.href} className={socialIcon.class}><span className="label">{socialIcon.label}</span></a></li>
+                 )
+                }) 
+              }
               </ul>
             </footer>
           </section>
@@ -50,20 +54,20 @@ const { connect } = require('react-redux');
 
               <div id="main">
 
-
+                  <img className="image background" src={this.props.sidebarInfo.topImage} />
                   <section id="one">
                     <div className="container">
                       <header className="major">
                         <h2>Welcome!</h2>
                         <p>Just an incredibly simple responsive site.</p>
                       </header>
-                      <p>I'm Kathryn, a Software Developer who has 2.5 years of working experience as a developer. I've worked with Java, .NET, JavaScript, Node, React, Redux, Express, SQL, Postgres, and HTML/CSS</p>
+                      <p>I'm Kathryn, a Software Developer who has over 2 years of working experience. I've worked with Java, .NET, JavaScript, Node, React, Redux, Express, Sequelize, Postgres, and HTML/CSS</p>
                     </div>
                   </section>
 
                   <section id="two">
                     <div className="container">
-                      <h3>Things I Can Do</h3>
+                      <h3>Key Skills</h3>
                       <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer lorem ipsum dolor sit amet.</p>
                       <ul className="feature-icons">
                         <li className="fa-code">Write all the code</li>
@@ -78,7 +82,7 @@ const { connect } = require('react-redux');
 
                   <section id="three">
                     <div className="container">
-                      <h3>A Few Accomplishments</h3>
+                      <h3>A Few Projects</h3>
                       <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
                       <div className="features">
                         { this.props.projects.map( project => {
@@ -142,7 +146,7 @@ const { connect } = require('react-redux');
   }
  }
 
- const mapState = state => ({projects: state.projects})
+ const mapState = state => ({projects: state.projects, sidebarInfo: state.sidebarInfo, socialIcons: state.socialIcons})
  
  const PageContainer = connect(mapState)(PageComponent)
 

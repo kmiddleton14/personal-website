@@ -2024,6 +2024,18 @@
 			overflow: hidden;
 		}
 
+		.image.background{
+
+			background-position: top right;
+			background-repeat: no-repeat;
+			background-size: cover;
+			content: '';
+			display: block;
+			height: 16em;
+			width: 100%;
+
+		}
+
 			.image.avatar img {
 				border-radius: 100%;
 				display: block;
@@ -2599,7 +2611,7 @@
 
 /* One */
 
-	#one:before {
+/*	#one:before {
 		background-image: url("../../images/Newyork-skyline.jpg");
 		background-position: top right;
 		background-repeat: no-repeat;
@@ -2608,7 +2620,7 @@
 		display: block;
 		height: 15em;
 		width: 100%;
-	}
+	}*/
 
 /* Footer */
 

@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const projectData = require('../project-data').projectData
+const sidebarInfo = require('../project-data').sidebarInfo
+const socialIcons = require('../project-data').socialIcons
 
 app.use(express.static(path.join(__dirname, '../public')));
 
@@ -61,7 +63,7 @@ function renderFullPage(html, preloadedState) {
 
 // rendering function, every request gets a new store instance that intializes the app state
 function handleRender(req, res) {
-  const preloadedState = {projects: projectData}
+  const preloadedState = {projects: projectData, sidebarInfo: sidebarInfo, socialIcons: socialIcons}
 
   const store = createStore(reducer, preloadedState)
   const html = renderToString(React.createElement(Provider, {store: store}, React.createElement(PageContainer)))

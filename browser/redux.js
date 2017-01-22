@@ -6,15 +6,21 @@ const thunkMiddleware = require('redux-thunk').default;
 
 // constants
 const SET_PROJECTS = 'SET_PROJECTS'
-const LIKE = 'LIKE'
+const SET_SIDEBAR = 'SET_SIDEBAR'
+const SET_SOCIAL_ICONS = 'SET_SOCIAL_ICONS'
 
 
 // sync action creators
 const setProjects = projects => ({type: SET_PROJECTS, projects})
+const setSidebar = sidebar => ({type: SET_SIDEBAR, sidebar})
+const setSocialIcons = icon => ({type: SET_SOCIAL_ICONS, icon})
 
 
-
-let preloadedState = {projects: []}
+let preloadedState = {
+	projects: [],
+	sidebarInfo: {},
+	socialIcons: []
+}
 
 // allows us to avoid 'window is not defined' on the server
 if (typeof(window) !== 'undefined') {
@@ -29,6 +35,12 @@ const reducer = function(state = preloadedState, action) {
     case SET_PROJECTS:
       return {projects: action.projects}
 
+    case SET_SIDEBAR:
+      return {sidebarInfo: action.sidebarInfo}
+
+    case SET_SOCIAL_ICONS:
+      return {socialIcons: action.socialIcons}
+
     default: return state
   }
 }
@@ -41,4 +53,3 @@ module.exports = {store, reducer}
 
 
 
-const axios = require('axios')
