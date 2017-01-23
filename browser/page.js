@@ -40,7 +40,7 @@ const { connect } = require('react-redux');
 
               { this.props.socialIcons.map( socialIcon => {
                   return(
-                    <li><a href={socialIcon.href} className={socialIcon.class}><span className="label">{socialIcon.label}</span></a></li>
+                    <li><a key={socialIcon.id} href={socialIcon.href} className={socialIcon.class}><span className="label">{socialIcon.label}</span></a></li>
                  )
                 }) 
               }
@@ -59,7 +59,7 @@ const { connect } = require('react-redux');
                     <div className="container">
                       <header className="major">
                         <h2>Welcome!</h2>
-                        <p>Just an incredibly simple responsive site.</p>
+                        <p>Just a simple portfolio site using React.</p>
                       </header>
                       <p>I'm Kathryn, a Software Developer who has over 2 years of working experience. I've worked with Java, .NET, JavaScript, Node, React, Redux, Express, Sequelize, Postgres, and HTML/CSS</p>
                     </div>

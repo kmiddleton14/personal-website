@@ -4253,7 +4253,7 @@
 	                  null,
 	                  React.createElement(
 	                    'a',
-	                    { href: socialIcon.href, className: socialIcon.class },
+	                    { key: socialIcon.id, href: socialIcon.href, className: socialIcon.class },
 	                    React.createElement(
 	                      'span',
 	                      { className: 'label' },
@@ -4289,7 +4289,7 @@
 	                  React.createElement(
 	                    'p',
 	                    null,
-	                    'Just an incredibly simple responsive site.'
+	                    'Just a simple portfolio site using React.'
 	                  )
 	                ),
 	                React.createElement(

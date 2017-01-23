@@ -2025,7 +2025,6 @@
 		}
 
 		.image.background{
-
 			background-position: top right;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -2033,7 +2032,6 @@
 			display: block;
 			height: 16em;
 			width: 100%;
-
 		}
 
 			.image.avatar img {
