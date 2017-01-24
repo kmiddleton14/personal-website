@@ -6783,9 +6783,8 @@
 	  socialIcons: []
 	};
 	
-	// allows us to avoid 'window is not defined' on the server
+	// Grab the state from a global variable injected into the server-generated HTML
 	if (typeof window !== 'undefined') {
-	  console.log('grabbing state off window');
 	  preloadedState = window.__PRELOADED_STATE__;
 	}
 	

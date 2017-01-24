@@ -20,7 +20,7 @@ const server = app.listen(port, function(err) {
 
 })
 
-
+//React server-side rendering
 
 require('node-jsx').install()
 const React = require('react');
@@ -33,7 +33,25 @@ const { PageContainer } = require('../browser/page')
 
 app.use('/server', handleRender)
 
-// creates HTML layout and sends preloaded state to window
+
+//Handle render function is fired every time the server receives a request
+function handleRender(req, res) {
+	const preloadedState = {projects: projectData, sidebarInfo: sidebarInfo, socialIcons: socialIcons}
+
+	//create a fresh, new Redux store instance on every request
+	const store = createStore(reducer, preloadedState)
+
+	// Render the component to a string
+	const html = renderToString(React.createElement(Provider, {store: store}, React.createElement(PageContainer)))
+	
+	//grab the initial state from our redux store
+	const finalState = store.getState()
+
+	//send the redered page back to the client
+	res.send(renderFullPage(html, finalState))
+}
+
+//this injects our initial coponent HTML and the initial state into a template to be rendered on the client side
 function renderFullPage(html, preloadedState) {
   return (
     `<!doctype html>
@@ -59,17 +77,6 @@ function renderFullPage(html, preloadedState) {
 		</body>
 	</html>`
     )
-}
-
-// rendering function, every request gets a new store instance that intializes the app state
-function handleRender(req, res) {
-  const preloadedState = {projects: projectData, sidebarInfo: sidebarInfo, socialIcons: socialIcons}
-
-  const store = createStore(reducer, preloadedState)
-  const html = renderToString(React.createElement(Provider, {store: store}, React.createElement(PageContainer)))
-  const finalState = store.getState()
-
-  res.send(renderFullPage(html, finalState))
 }
 
 
