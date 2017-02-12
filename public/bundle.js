@@ -4194,7 +4194,25 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              this.props.sidebarInfo.description
+	              React.createElement(
+	                'ul',
+	                { className: 'icons' },
+	                this.props.socialIcons.map(function (socialIcon) {
+	                  return React.createElement(
+	                    'li',
+	                    null,
+	                    React.createElement(
+	                      'a',
+	                      { key: socialIcon.id, href: socialIcon.href, className: socialIcon.class },
+	                      React.createElement(
+	                        'span',
+	                        { className: 'label' },
+	                        socialIcon.label
+	                      )
+	                    )
+	                  );
+	                })
+	              )
 	            )
 	          ),
 	          React.createElement(
@@ -4218,7 +4236,7 @@
 	                React.createElement(
 	                  'a',
 	                  { href: '#two' },
-	                  'Skills'
+	                  'Technical Skills'
 	                )
 	              ),
 	              React.createElement(
@@ -4227,7 +4245,7 @@
 	                React.createElement(
 	                  'a',
 	                  { href: '#three' },
-	                  'A Few Projects'
+	                  'Recent Projects'
 	                )
 	              ),
 	              React.createElement(
@@ -4236,32 +4254,18 @@
 	                React.createElement(
 	                  'a',
 	                  { href: '#four' },
-	                  'Contact'
+	                  'Tech Talk'
+	                )
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  'a',
+	                  { href: 'images/Kathryn Middleton Resume.pdf' },
+	                  'Download Resume'
 	                )
 	              )
-	            )
-	          ),
-	          React.createElement(
-	            'footer',
-	            null,
-	            React.createElement(
-	              'ul',
-	              { className: 'icons' },
-	              this.props.socialIcons.map(function (socialIcon) {
-	                return React.createElement(
-	                  'li',
-	                  null,
-	                  React.createElement(
-	                    'a',
-	                    { key: socialIcon.id, href: socialIcon.href, className: socialIcon.class },
-	                    React.createElement(
-	                      'span',
-	                      { className: 'label' },
-	                      socialIcon.label
-	                    )
-	                  )
-	                );
-	              })
 	            )
 	          )
 	        ),
@@ -4271,7 +4275,6 @@
 	          React.createElement(
 	            'div',
 	            { id: 'main' },
-	            React.createElement('img', { className: 'image background', src: this.props.sidebarInfo.topImage }),
 	            React.createElement(
 	              'section',
 	              { id: 'one' },
@@ -4289,13 +4292,13 @@
 	                  React.createElement(
 	                    'p',
 	                    null,
-	                    'Just a simple portfolio site using React.'
+	                    'I\'m Kathryn, a full stack software engineer'
 	                  )
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  'I\'m Kathryn, a Software Developer who has over 2 years of working experience. I\'ve worked with Java, .NET, JavaScript, Node, React, Redux, Express, Sequelize, Postgres, and HTML/CSS'
+	                  'I have over 2 years of working experience at IHS Markit. I\'ve worked with Java, .NET, JavaScript, Node, React, Redux, Express, Sequelize, Postgres, and HTML5/CSS.'
 	                )
 	              )
 	            ),
@@ -4308,7 +4311,7 @@
 	                React.createElement(
 	                  'h3',
 	                  null,
-	                  'Key Skills'
+	                  'Technical Skills'
 	                ),
 	                React.createElement(
 	                  'p',
@@ -4321,32 +4324,32 @@
 	                  React.createElement(
 	                    'li',
 	                    { className: 'fa-code' },
-	                    'Write all the code'
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'fa-cubes' },
-	                    'Stack small boxes'
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'fa-book' },
-	                    'Read books and stuff'
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'fa-coffee' },
-	                    'Drink much coffee'
-	                  ),
-	                  React.createElement(
-	                    'li',
-	                    { className: 'fa-bolt' },
-	                    'Lightning bolt'
+	                    'Java, .NET, JavaScript'
 	                  ),
 	                  React.createElement(
 	                    'li',
 	                    { className: 'fa-users' },
-	                    'Shadow clone technique'
+	                    'Digital Marketing'
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'fa-github-square' },
+	                    'Github'
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'fa-code-fork' },
+	                    'Agile Development'
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'fa-keyboard-o' },
+	                    'Lightning bolt'
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'fa-chevron-right' },
+	                    'UNIX commands'
 	                  )
 	                )
 	              )
@@ -4360,12 +4363,7 @@
 	                React.createElement(
 	                  'h3',
 	                  null,
-	                  'A Few Projects'
-	                ),
-	                React.createElement(
-	                  'p',
-	                  null,
-	                  'Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.'
+	                  'Recent Projects'
 	                ),
 	                React.createElement(
 	                  'div',
@@ -4376,7 +4374,7 @@
 	                      { key: project.id },
 	                      React.createElement(
 	                        'a',
-	                        { href: '#', className: 'image' },
+	                        { href: project.url, className: 'image' },
 	                        React.createElement('img', { src: project.img, alt: '' })
 	                      ),
 	                      React.createElement(
@@ -4385,13 +4383,23 @@
 	                        React.createElement(
 	                          'h4',
 	                          null,
-	                          project.name,
-	                          ' '
+	                          project.name
 	                        ),
 	                        React.createElement(
 	                          'p',
 	                          null,
-	                          project.description
+	                          project.description,
+	                          '  ',
+	                          React.createElement(
+	                            'a',
+	                            { href: project.github, className: 'icon fa-github' },
+	                            React.createElement(
+	                              'span',
+	                              { className: 'label' },
+	                              'Github'
+	                            )
+	                          ),
+	                          ' '
 	                        )
 	                      )
 	                    );
@@ -4408,71 +4416,14 @@
 	                React.createElement(
 	                  'h3',
 	                  null,
-	                  'Contact Me'
+	                  'Tech Talk: How to use React server-side rendering'
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  'Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.'
+	                  'Learn how React can also be used on our server and the differences between client-side versus server-side rendering'
 	                ),
-	                React.createElement(
-	                  'form',
-	                  { method: 'post', action: '#' },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'row uniform' },
-	                    React.createElement(
-	                      'div',
-	                      { className: '6u 12u(xsmall)' },
-	                      React.createElement('input', { type: 'text', name: 'name', id: 'name', placeholder: 'Name' })
-	                    ),
-	                    React.createElement(
-	                      'div',
-	                      { className: '6u 12u(xsmall)' },
-	                      React.createElement('input', { type: 'email', name: 'email', id: 'email', placeholder: 'Email' })
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'div',
-	                    { className: 'row uniform' },
-	                    React.createElement(
-	                      'div',
-	                      { className: '12u' },
-	                      React.createElement('input', { type: 'text', name: 'subject', id: 'subject', placeholder: 'Subject' })
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'div',
-	                    { className: 'row uniform' },
-	                    React.createElement(
-	                      'div',
-	                      { className: '12u' },
-	                      React.createElement('textarea', { name: 'message', id: 'message', placeholder: 'Message', rows: '6' })
-	                    )
-	                  ),
-	                  React.createElement(
-	                    'div',
-	                    { className: 'row uniform' },
-	                    React.createElement(
-	                      'div',
-	                      { className: '12u' },
-	                      React.createElement(
-	                        'ul',
-	                        { className: 'actions' },
-	                        React.createElement(
-	                          'li',
-	                          null,
-	                          React.createElement('input', { type: 'submit', className: 'special', value: 'Send Message' })
-	                        ),
-	                        React.createElement(
-	                          'li',
-	                          null,
-	                          React.createElement('input', { type: 'reset', value: 'Reset Form' })
-	                        )
-	                      )
-	                    )
-	                  )
-	                )
+	                React.createElement('iframe', { width: '560', height: '315', src: 'https://www.youtube.com/embed/PySMaETAgQE', frameborder: '0', allowfullscreen: true })
 	              )
 	            )
 	          ),

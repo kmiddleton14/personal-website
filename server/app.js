@@ -7,10 +7,8 @@ const socialIcons = require('../project-data').socialIcons
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/', (req, res) => {
-	//const filePath = path.resolve('browser/index.html')
-	res.send('Page cleared');
-})
+
+app.use('/', handleRender)
 
 
 const port = 8080;
@@ -31,7 +29,6 @@ const { reducer } = require('../browser/redux')
 const { PageContainer } = require('../browser/page')
 
 
-app.use('/server', handleRender)
 
 
 //Handle render function is fired every time the server receives a request
@@ -41,13 +38,13 @@ function handleRender(req, res) {
 	//create a fresh, new Redux store instance on every request
 	const store = createStore(reducer, preloadedState)
 
-	// Render the component to a string
+	// Render the React component to a string
 	const html = renderToString(React.createElement(Provider, {store: store}, React.createElement(PageContainer)))
 	
 	//grab the initial state from our redux store
 	const finalState = store.getState()
 
-	//send the redered page back to the client
+	//send the rendered page back to the client
 	res.send(renderFullPage(html, finalState))
 }
 
@@ -59,6 +56,7 @@ function renderFullPage(html, preloadedState) {
 		<head>
 			<title>Kathryn Middleton</title>
 		    <link href="/style.css" rel="stylesheet" />
+		    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
 		    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
 	    	<meta charset="utf-8" />
 	    	<meta name="viewport" content="width=device-width, initial-scale=1" />
