@@ -1,7 +1,7 @@
 const project1 = {
 	id: 1, 
 	name: 'Get [F]it Done', 
-	img: 'images/GetFitDone.png', 
+	img: 'public/images/GetFitDone.png', 
 	description: 'Chrome extension using React.js and Redux that integrates with Fitbit API. Utilizes user’s personal Fitbit data to encourage healthy habits by blocking browser usage.',
 	url: 'https://chrome.google.com/webstore/detail/get-fit-done/fecjgkehmgognabbnohaoombfboddooo',
 	github: 'https://github.com/katedjackson/get-fit-done',
@@ -19,13 +19,13 @@ const project1 = {
 const project2 = {
 	id: 3, 
 	name: 'Storecaster', 
-	img: 'images/Storecaster.png', 
+	img: 'public/images/Storecaster.png', 
 	description: 'E-commerce site that lets users purchase the weather.  Used Postgres, Express.js, React.js, and Redux.',
 	url: 'https://www.github.com/kmiddleton14/Storecaster',
 	github: 'https://www.github.com/kmiddleton14/Storecaster'
 }
 
-const sidebarInfo = { topImage: '../../images/Newyork-skyline.jpg', headshotImg:'/images/Headshot.jpg', name: 'Kathryn Middleton', description: 'System.out.println("Hello world!")'}
+const sidebarInfo = { topImage: '../../public/images/Newyork-skyline.jpg', headshotImg:'public/images/Headshot.jpg', name: 'Kathryn Middleton', description: 'System.out.println("Hello world!")'}
 const tumblrIcon = { id: 1, label: 'Tumblr', class: 'icon fa-tumblr', href: 'https://kmiddleton14.tumblr.com/', }
 const twitterIcon = { id: 2, label: 'Twitter', class: 'icon fa-twitter', href: 'https://twitter.com/kmiddleton14', }
 const linkedInIcon = { id: 3, label: 'LinkedIn', class: 'icon fa-linkedin', href: 'https://www.linkedin.com/in/kmiddleton14', }

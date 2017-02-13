@@ -1,7 +1,9 @@
 'use strict'
 
-const {createStore, applyMiddleware, combineReducers} = require('redux');
-const thunkMiddleware = require('redux-thunk').default;
+import {createStore, applyMiddleware, combineReducers} from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import reduxLogger from 'redux-logger';
+import axios from 'axios';
 
 
 // constants
@@ -16,39 +18,73 @@ const setSidebar = sidebar => ({type: SET_SIDEBAR, sidebar})
 const setSocialIcons = icon => ({type: SET_SOCIAL_ICONS, icon})
 
 
-let preloadedState = {
-	projects: [],
-	sidebarInfo: {},
-	socialIcons: []
+
+// async action creators
+const fetchProjects = () => dispatch => {
+  axios.get('/api/projects')
+    .then(res => {
+      dispatch(setProjects(res.data))
+      console.log("is it getting here", res.data)
+    })
+}
+// async action creators
+const fetchSidebar = () => dispatch => {
+  axios.get('/api/sidebar')
+    .then(res => {
+      dispatch(setSidebar(res.data))
+    })
+}
+// async action creators
+const fetchSocialIcons = () => dispatch => {
+  axios.get('/api/socialIcons')
+    .then(res => {
+      dispatch(setSocialIcons(res.data))
+    })
 }
 
-// Grab the state from a global variable injected into the server-generated HTML
-if (typeof(window) !== 'undefined') {
-  preloadedState = window.__PRELOADED_STATE__
+const sidebarInfo = { topImage: '../../public/images/Newyork-skyline.jpg', headshotImg:'public/images/Headshot.jpg', name: 'Kathryn Middleton', description: 'System.out.println("Hello world!")'}
+const tumblrIcon = { id: 1, label: 'Tumblr', class: 'icon fa-tumblr', href: 'https://kmiddleton14.tumblr.com/', }
+const twitterIcon = { id: 2, label: 'Twitter', class: 'icon fa-twitter', href: 'https://twitter.com/kmiddleton14', }
+const linkedInIcon = { id: 3, label: 'LinkedIn', class: 'icon fa-linkedin', href: 'https://www.linkedin.com/in/kmiddleton14', }
+const githubIcon = { id: 4, label: 'Github', class: 'icon fa-github', href: 'https://github.com/kmiddleton14', }
+const emailIcon = { id: 5, label: 'Email', class: 'icon fa-envelope', href: 'mailto:kmiddleton14@gmail.com?Subject=Hello', }
+
+
+
+let initialState = {
+	projects: [],
+	sidebarInfo: { topImage: '../public/images/Newyork-skyline.jpg', headshotImg:'public/images/Headshot.jpg', name: 'Kathryn Middleton', description: 'System.out.println("Hello world!")'},
+	socialIcons: [ linkedInIcon, githubIcon, emailIcon, tumblrIcon, twitterIcon ]
 }
 
 
 // reducer
-const reducer = function(state = preloadedState, action) {
+const reducer = function(state = initialState, action) {
+  const newState = Object.assign({}, state);
+
   switch (action.type) {
     case SET_PROJECTS:
-      return {projects: action.projects}
+      newState.projects = action.projects
+      break;
 
     case SET_SIDEBAR:
-      return {sidebarInfo: action.sidebarInfo}
+      newState.sidebarInfo = action.sidebarInfo
+      break;
 
     case SET_SOCIAL_ICONS:
-      return {socialIcons: action.socialIcons}
+      newState.socialIcons = action.socialIcons
+      break;
 
     default: return state
   }
+  return newState;
 }
 
-const middleware = applyMiddleware(thunkMiddleware)
+const middleware = applyMiddleware(thunkMiddleware, reduxLogger( { collapsed: true }))
 
 const store = createStore(reducer, middleware);
 
-module.exports = {store, reducer}
+export { store, fetchProjects, fetchSocialIcons, fetchSidebar, reducer}
 
 
 

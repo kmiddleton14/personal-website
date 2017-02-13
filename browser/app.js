@@ -1,11 +1,11 @@
 'use strict';
 
-const React = require('react');
-const { PageContainer } = require('./page');
-const { Provider } = require('react-redux');
-const { store } = require('./redux');
+import React from 'react';
+import PageContainer from './page';
+import { Provider } from 'react-redux';
+import { store } from './redux' ;
 
-class AppWithProvider extends React.Component {
+export default class AppWithProvider extends React.Component {
   render() {
     return(
       <Provider store={store}>
@@ -14,4 +14,4 @@ class AppWithProvider extends React.Component {
     )
   }
 }
-module.exports = { AppWithProvider }
+

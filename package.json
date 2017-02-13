@@ -39,9 +39,11 @@
     "react-video": "^1.5.3",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
+    "volleyball": "^1.4.1",
     "webpack": "^1.14.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "redux-logger": "^2.8.1"
   }
 }

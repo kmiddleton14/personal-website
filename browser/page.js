@@ -1,7 +1,7 @@
 'use strict';
-const React = require('react')
-const { connect } = require('react-redux');
-
+import React from 'react';
+import { connect } from 'react-redux';
+import { fetchProjects, fetchSocialIcons, fetchSidebar } from './redux';
 
 
 
@@ -11,14 +11,17 @@ const { connect } = require('react-redux');
     super(props)
   }
 
-  componentDidMount() {
-    console.log('component did mount')
-    
+
+  componentDidMount(){
+    this.props.fetchProjects();
+    this.props.fetchSidebar();
+    this.props.fetchSocialIcons();
+    console.log(this.props)
+
   }
 
-
   render() {
-    
+    console.log("props", this.props)
     return (
         <div >
           <section id="header">
@@ -43,7 +46,7 @@ const { connect } = require('react-redux');
                 <li><a href="#two">Technical Skills</a></li>
                 <li><a href="#three">Recent Projects</a></li>
                 <li><a href="#four">Tech Talk</a></li>
-                <li><a href="images/Kathryn Middleton Resume.pdf">Download Resume</a></li>
+                <li><a href="public/images/Kathryn Middleton Resume.pdf">Download Resume</a></li>
               </ul>
             </nav>
           </section>
@@ -112,10 +115,31 @@ const { connect } = require('react-redux');
   }
  }
 
- const mapState = state => ({projects: state.projects, sidebarInfo: state.sidebarInfo, socialIcons: state.socialIcons})
- 
- const PageContainer = connect(mapState)(PageComponent)
 
- module.exports = {PageContainer: PageContainer}
+const mapStateToProps = (state) => {
+  return { projects: state.projects, sidebarInfo: state.sidebarInfo, socialIcons: state.socialIcons }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchProjects()  {
+      dispatch(fetchProjects());
+    },
+    fetchSidebar() {
+      dispatch(fetchSidebar());
+    },
+    fetchSocialIcons() {
+      dispatch(fetchSocialIcons());
+    }
+  };
+};
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PageComponent);
+
+
 
 
