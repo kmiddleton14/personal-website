@@ -4298,7 +4298,7 @@
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  'I have over 2 years of working experience at IHS Markit. I\'ve worked with Java, .NET, JavaScript, Node, React, Redux, Express, Sequelize, Postgres, and HTML5/CSS.'
+	                  'I have over 2 years of working experience at IHS Markit. I\'ve worked with Java, .NET, JavaScript, Node, React, Redux, Express, Sequelize, Postgres, and HTML5/CSS.  I have a passion to code and to explore new technologies while also getting others excited about coding too.'
 	                )
 	              )
 	            ),
