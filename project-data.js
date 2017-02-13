@@ -2,9 +2,10 @@ const project1 = {
 	id: 1, 
 	name: 'Get [F]it Done', 
 	img: 'images/GetFitDone.png', 
-	description: 'Chrome extension using React.js and Redux that integrates with Fitbit api.  Blocks webpages if user doesn’t get a certain amount of steps every hour.',
+	description: 'Chrome extension using React.js and Redux that integrates with Fitbit API. Utilizes user’s personal Fitbit data to encourage healthy habits by blocking browser usage.',
 	url: 'https://chrome.google.com/webstore/detail/get-fit-done/fecjgkehmgognabbnohaoombfboddooo',
-	github: 'https://github.com/katedjackson/get-fit-done'
+	github: 'https://github.com/katedjackson/get-fit-done',
+	deployedUrl: 'https://chrome.google.com/webstore/detail/get-fit-done/fecjgkehmgognabbnohaoombfboddooo'
 }
 
 // const project2 = {
@@ -18,7 +19,7 @@ const project1 = {
 const project2 = {
 	id: 3, 
 	name: 'Storecaster', 
-	img: 'images/storecaster_logo.png', 
+	img: 'images/Storecaster.png', 
 	description: 'E-commerce site that lets users purchase the weather.  Used Postgres, Express.js, React.js, and Redux.',
 	url: 'https://www.github.com/kmiddleton14/Storecaster',
 	github: 'https://www.github.com/kmiddleton14/Storecaster'

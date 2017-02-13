@@ -68,14 +68,14 @@ const { connect } = require('react-redux');
                   <section id="two">
                      <div className="container">
                        <h3>Technical Skills</h3>
-                       <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer lorem ipsum dolor sit amet.</p>
+                       <p></p>
                        <ul className="feature-icons">
                          <li className="fa-code">Java, .NET, JavaScript</li>
+                         <li className="fa-cubes">PostgreSQL, MySQL, Sequelize</li>
                          <li className="fa-users">Digital Marketing</li>
                          <li className="fa-github-square">Github</li>
                          <li className="fa-code-fork">Agile Development</li>
-                         <li className="fa-keyboard-o">Lightning bolt</li>
-                         <li className="fa-chevron-right">UNIX commands</li>
+                         <li className="fa-chevron-right">UNIX</li>
                        </ul>
                      </div>
                    </section>
@@ -91,7 +91,15 @@ const { connect } = require('react-redux');
                                 <a href={project.url} className="image"><img src={project.img} alt="" /></a>
                                 <div className="inner">
                                   <h4>{project.name}</h4>
-                                  <p>{project.description}  <a href={project.github} className="icon fa-github"><span className="label">Github</span></a> </p>
+                                  <p>{project.description} </p>
+                                  <ul className="actions small">
+                                    <li><a href={project.github} className="button special small">Github</a></li>
+                                    {project.deployedUrl ? <li><a href={project.deployedUrl} className="button special small">Deployed Site</a></li> : <li></li>}
+                                    
+                                  </ul>
+                                  
+
+
                                 </div>
                               </article>
                            )
@@ -109,7 +117,6 @@ const { connect } = require('react-redux');
                     </div>
                   </section>  
 
-                  
 
 
 

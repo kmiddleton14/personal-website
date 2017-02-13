@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', handleRender)
 
 
-const port = 8080;
+const port = 1337;
 const server = app.listen(port, function(err) {
 	if(err) throw err;
 	console.log('server is listneing on port ', port)

@@ -4313,11 +4313,7 @@
 	                  null,
 	                  'Technical Skills'
 	                ),
-	                React.createElement(
-	                  'p',
-	                  null,
-	                  'Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer lorem ipsum dolor sit amet.'
-	                ),
+	                React.createElement('p', null),
 	                React.createElement(
 	                  'ul',
 	                  { className: 'feature-icons' },
@@ -4325,6 +4321,11 @@
 	                    'li',
 	                    { className: 'fa-code' },
 	                    'Java, .NET, JavaScript'
+	                  ),
+	                  React.createElement(
+	                    'li',
+	                    { className: 'fa-cubes' },
+	                    'PostgreSQL, MySQL, Sequelize'
 	                  ),
 	                  React.createElement(
 	                    'li',
@@ -4343,13 +4344,8 @@
 	                  ),
 	                  React.createElement(
 	                    'li',
-	                    { className: 'fa-keyboard-o' },
-	                    'Lightning bolt'
-	                  ),
-	                  React.createElement(
-	                    'li',
 	                    { className: 'fa-chevron-right' },
-	                    'UNIX commands'
+	                    'UNIX'
 	                  )
 	                )
 	              )
@@ -4389,17 +4385,29 @@
 	                          'p',
 	                          null,
 	                          project.description,
-	                          '  ',
+	                          ' '
+	                        ),
+	                        React.createElement(
+	                          'ul',
+	                          { className: 'actions small' },
 	                          React.createElement(
-	                            'a',
-	                            { href: project.github, className: 'icon fa-github' },
+	                            'li',
+	                            null,
 	                            React.createElement(
-	                              'span',
-	                              { className: 'label' },
+	                              'a',
+	                              { href: project.github, className: 'button special small' },
 	                              'Github'
 	                            )
 	                          ),
-	                          ' '
+	                          project.deployedUrl ? React.createElement(
+	                            'li',
+	                            null,
+	                            React.createElement(
+	                              'a',
+	                              { href: project.deployedUrl, className: 'button special small' },
+	                              'Deployed Site'
+	                            )
+	                          ) : React.createElement('li', null)
 	                        )
 	                      )
 	                    );
