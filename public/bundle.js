@@ -4434,33 +4434,6 @@
 	                React.createElement('iframe', { width: '560', height: '315', src: 'https://www.youtube.com/embed/PySMaETAgQE', frameborder: '0', allowfullscreen: true })
 	              )
 	            )
-	          ),
-	          React.createElement(
-	            'section',
-	            { id: 'footer' },
-	            React.createElement(
-	              'div',
-	              { className: 'container' },
-	              React.createElement(
-	                'ul',
-	                { className: 'copyright' },
-	                React.createElement(
-	                  'li',
-	                  null,
-	                  '\xA9 Untitled. All rights reserved.'
-	                ),
-	                React.createElement(
-	                  'li',
-	                  null,
-	                  'Design: ',
-	                  React.createElement(
-	                    'a',
-	                    { href: 'http://html5up.net' },
-	                    'HTML5 UP'
-	                  )
-	                )
-	              )
-	            )
 	          )
 	        )
 	      );

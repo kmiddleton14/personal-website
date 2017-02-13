@@ -50,11 +50,7 @@ const { connect } = require('react-redux');
 
 
           <div id="wrapper">
-
-
               <div id="main">
-
-                  
                   <section id="one">
                     <div className="container">
                       <header className="major">
@@ -64,7 +60,6 @@ const { connect } = require('react-redux');
                       <p>I have over 2 years of working experience at IHS Markit. I've worked with Java, .NET, JavaScript, Node, React, Redux, Express, Sequelize, Postgres, and HTML5/CSS.</p>
                     </div>
                   </section>
-
                   <section id="two">
                      <div className="container">
                        <h3>Technical Skills</h3>
@@ -79,8 +74,6 @@ const { connect } = require('react-redux');
                        </ul>
                      </div>
                    </section>
-
-
                   <section id="three">
                     <div className="container">
                       <h3>Recent Projects</h3>
@@ -97,9 +90,6 @@ const { connect } = require('react-redux');
                                     {project.deployedUrl ? <li><a href={project.deployedUrl} className="button special small">Deployed Site</a></li> : <li></li>}
                                     
                                   </ul>
-                                  
-
-
                                 </div>
                               </article>
                            )
@@ -108,7 +98,6 @@ const { connect } = require('react-redux');
                       </div>
                     </div>
                   </section>
-
                   <section id="four">
                     <div className="container">
                       <h3>Tech Talk: How to use React server-side rendering</h3>
@@ -116,20 +105,7 @@ const { connect } = require('react-redux');
                       <iframe width="560" height="315" src="https://www.youtube.com/embed/PySMaETAgQE" frameborder="0" allowfullscreen></iframe>
                     </div>
                   </section>  
-
-
-
-
               </div>
-
-              <section id="footer">
-                <div className="container">
-                  <ul className="copyright">
-                    <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                  </ul>
-                </div>
-              </section>
-
           </div>
         </div>
     )
