@@ -21562,14 +21562,10 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.props.fetchProjects();
-	      this.props.fetchSidebar();
-	      this.props.fetchSocialIcons();
-	      console.log(this.props);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log("props", this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -21833,7 +21829,7 @@
 	                  null,
 	                  'Learn how React can also be used on our server and the differences between client-side versus server-side rendering'
 	                ),
-	                _react2.default.createElement('iframe', { width: '560', height: '315', src: 'https://www.youtube.com/embed/PySMaETAgQE', frameborder: '0', allowfullscreen: true })
+	                _react2.default.createElement('iframe', { width: '560', height: '315', src: 'https://www.youtube.com/embed/PySMaETAgQE', frameborder: '0', allowFullScreen: true })
 	              )
 	            )
 	          )
@@ -24142,7 +24138,6 @@
 	  return function (dispatch) {
 	    _axios2.default.get('/api/projects').then(function (res) {
 	      dispatch(setProjects(res.data));
-	      console.log("is it getting here", res.data);
 	    });
 	  };
 	};
@@ -24202,7 +24197,7 @@
 	  return newState;
 	};
 	
-	var middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger2.default)({ collapsed: true }));
+	var middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default);
 	
 	var store = (0, _redux.createStore)(reducer, middleware);
 	

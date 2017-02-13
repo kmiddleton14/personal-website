@@ -14,14 +14,9 @@ import { fetchProjects, fetchSocialIcons, fetchSidebar } from './redux';
 
   componentDidMount(){
     this.props.fetchProjects();
-    this.props.fetchSidebar();
-    this.props.fetchSocialIcons();
-    console.log(this.props)
-
   }
 
   render() {
-    console.log("props", this.props)
     return (
         <div >
           <section id="header">
@@ -105,7 +100,7 @@ import { fetchProjects, fetchSocialIcons, fetchSidebar } from './redux';
                     <div className="container">
                       <h3>Tech Talk: How to use React server-side rendering</h3>
                       <p>Learn how React can also be used on our server and the differences between client-side versus server-side rendering</p>
-                      <iframe width="560" height="315" src="https://www.youtube.com/embed/PySMaETAgQE" frameborder="0" allowfullscreen></iframe>
+                      <iframe width="560" height="315" src="https://www.youtube.com/embed/PySMaETAgQE" frameborder="0" allowFullScreen></iframe>
                     </div>
                   </section>  
               </div>

@@ -24,7 +24,6 @@ const fetchProjects = () => dispatch => {
   axios.get('/api/projects')
     .then(res => {
       dispatch(setProjects(res.data))
-      console.log("is it getting here", res.data)
     })
 }
 // async action creators
@@ -80,7 +79,7 @@ const reducer = function(state = initialState, action) {
   return newState;
 }
 
-const middleware = applyMiddleware(thunkMiddleware, reduxLogger( { collapsed: true }))
+const middleware = applyMiddleware(thunkMiddleware)
 
 const store = createStore(reducer, middleware);
 
