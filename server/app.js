@@ -31,7 +31,7 @@ app.get('/api/socialIcons', function (req, res) {
   res.send(socialIcons)
 })
 
-const port = 1337;
+const port = process.env.PORT || 1337;
 const server = app.listen(port, function(err) {
 	if(err) throw err;
 	console.log('server is listneing on port ', port)
